@@ -18,10 +18,35 @@ const ComponentNonJsx = React.createElement('p', null, 'hello world');
 //JSX is similar to HTML but is not the same
 const ComponentJsx = <p>hello world1</p>;
 
+// Adding dynamic content to our Functional Component
+// we need to pass properties to the child component
+// we made an object destructuring
+const Li = ({children, estado, casa, edad}) =>{
+  console.log(casa, edad);
+  return(
+    <li>{children} {estado}</li>
+  );
+} 
+
 // if we create the JSX component inside a function is called Functional Component
 // to call the functional component insder our render we need to write it as JSX
 // like for example <FunctionalComponent />
-const FunctionalComponent = () => <p>hello world2</p>;
+const FunctionalComponent = () =>
+  <ul>
+    <Li 
+    estado={'happy'}
+    casa={false}
+    edad={24}
+    >
+    jeanne
+    </Li>
+    <Li
+      estado={'sad'}
+    >meltryllis</Li>
+    <Li
+      estado={'happy'}
+    >shinobu</Li>
+  </ul>
 
 /* ReactDOM.render is the function that we use to render content
 * for our application
