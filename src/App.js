@@ -1,24 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const estilo2 = {
+  boxShadow: '0 5px 3px rgba(0,0,0,0.1)'
+}
+
+const estilo = (bg='#333') => ({
+  backgroundColor: bg,
+  color: '#fff',
+  padding: '10px 15px',
+  margin: '10px 15px'
+})
+
+//we could use props instead of object destructuring{}
+//but it could be dificult to navigate through the available objects in the future
+const ListItem = ({children}) => {
+  return(
+    <li style={{...estilo2, ...estilo('#057')}} className="clase-li">{children}</li>
+  );
+}
+
+//we use className so we can pass css class to the component
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ul style={estilo('#750')} className="css-customClass">
+      <ListItem>aaaa</ListItem>
+    </ul>
   );
 }
 
