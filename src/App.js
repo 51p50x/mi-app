@@ -1,11 +1,33 @@
 import {Component} from 'react'
 
+// constructor -> render -> componentDidMount
 class Button extends Component {
+    state = {}
+    
+    constructor(props){
+        super(props)
+        console.log('constructor', props);
+    }
+
     render(){
         console.log('executing render method for button component');
         return(
-            <button>Enviar</button>
+            <button onClick={()=>this.setState({prop: 1})}>
+                Enviar
+            </button>
         )
+    }
+
+    componentDidMount(){
+        console.log('componentDidMount');
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        console.log('component did update', prevProps, prevState);
+    }
+
+    componentWillUnmount(){
+        console.log('unmounting component', this.props, this.state);
     }
 }
 
@@ -16,7 +38,8 @@ class App extends Component{
         return(
             <div>
                 <p>Hola mundo</p>
-                <Button/>
+                {this.state===3 ?
+                <Button waifu="happy" /> : null}
                 <button 
                     className={`${this.state.valor}`} 
                     onClick={()=> this.setState({valor: 2})}
